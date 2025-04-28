@@ -1,16 +1,17 @@
 import styled from "@emotion/styled";
-import { Button } from "./Button";
-import { useNavigate } from "react-router-dom";
-import { PAGE } from "constants/common";
-import { Box } from "styles/StyleComponent";
-
-export const ProductInCart = ({ product, cart, setCart, ...rest }) => {
-  const navigate = useNavigate();
-
-  const handleRemove = (product) => {
-    const newCart = cart.filter((item) => item !== product);
-    setCart(newCart);
-  };
+import React, { useContext} from "react";
+import {Button } from"./Button";
+import {useNavigate }from "react-router-dom";
+import {PAGE } from "constants/common";
+import {Box }from"styles/StyleComponent";
+import {CartContext }from "context/CartContext";
+export const ProductInCart =({product,...rest }) => {
+const navigate = useNavigate();
+const {cart, setCart } =useContext(CartContext);
+const handleRemove =(product)=> {
+const newCart =cart.filter((item)=>item !== product);
+setCart(newCart);
+};
 
   return (
     <Item {...rest}>
